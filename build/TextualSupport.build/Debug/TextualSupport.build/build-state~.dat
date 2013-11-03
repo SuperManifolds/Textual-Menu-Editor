@@ -1,0 +1,74 @@
+TTextualSupport
+v6
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/build/Debug/TextualSupport.bundle/Contents/Info.plist /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/info.plist
+cCompileXIB /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/PreferencePane.xib
+cCopyPlistFile /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/build/Debug/TextualSupport.bundle/Contents/Resources/messages.plist messages.plist
+
+N/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/PreferencePane.xib
+c0000000052700C440000000000000713
+t1383074884
+s1811
+
+N/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/build/Debug/TextualSupport.bundle/Contents/Info.plist
+t1382570266
+s1078
+
+N/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/build/Debug/TextualSupport.bundle/Contents/Resources/PreferencePane.nib
+t2
+s0
+
+N/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/build/Debug/TextualSupport.bundle/Contents/Resources/messages.plist
+t1382637921
+s5274
+
+N/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/info.plist
+c00000000526857B60000000000000289
+t1382569910
+s649
+
+N/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/messages.plist
+c0000000052695AFF000000000000149A
+t1382636287
+s5274
+
+CBuild AST from /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/TPI_TextualSupport.m
+r0
+
+CBuild AST from /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/TPI_TextualSupport_MenuController.m
+r0
+
+CCheck dependencies
+r0
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependenciesbf0ad8c44320b841^d15cdfc44320b841^---0#1#1#--18"Check dependencies36"4B39AE40-04C3-44E7-912A-8DFA47A62976-
+
+CCompileC build/TextualSupport.build/Debug/TextualSupport.build/Objects-normal/x86_64/TPI_TextualSupport.o /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/TPI_TextualSupport.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileC build/TextualSupport.build/Debug/TextualSupport.build/Objects-normal/x86_64/TPI_TextualSupport_MenuController.o /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/TPI_TextualSupport_MenuController.m normal x86_64 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
+CCompileXIB /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/PreferencePane.xib
+s404767684.873032
+e404767685.327177
+r0
+xCompileXIB
+x/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/PreferencePane.xib
+o/* com.apple.ibtool.document.errors */
+o/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/PreferencePane.xib:6Fm-F0-nhb: error: Auto Layout on OS X prior to 10.7 [12]
+lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compiling /Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/PreferencePane.xib29"CompileXIB PreferencePane.xibf889dfc44320b841^12c253c54320b841^-172"/* com.apple.ibtool.document.errors *//Users/lexi/Google Drive/Development/OSX/Textual Menu Editor/PreferencePane.xib:6Fm-F0-nhb: error: Auto Layout on OS X prior to 10.71(21%IDEActivityLogMessage2@33"Auto Layout on OS X prior to 10.7-404767685#18446744073709551615#0#-2#-23%DVTTextDocumentLocation3@92"file:///Users/lexi/Google%20Drive/Development/OSX/Textual%20Menu%20Editor/PreferencePane.xib0000000000000000^5#18446744073709551615#5#18446744073709551615#18446744073709551615#0#21"Illegal Configuration--0#0#1#-19%DVTDocumentLocation4@92"file:///Users/lexi/Google%20Drive/Development/OSX/Textual%20Menu%20Editor/PreferencePane.xib0000000000000000^580"CompileXIB PreferencePane.xib    cd "/Users/lexi/Google Drive/Development/OSX/Textual Menu Editor"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 10.6 --output-format human-readable-text --compile /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/build/Debug/TextualSupport.bundle/Contents/Resources/PreferencePane.nib /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/PreferencePane.xib36"89BD2F49-A011-4D86-B8D3-385A58D0FA7F-
+bAC96BB58-C6F0-4D58-B625-BD7E27F48B79
+
+CCopyPlistFile /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/build/Debug/TextualSupport.bundle/Contents/Resources/messages.plist messages.plist
+r0
+
+CLd /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/build/Debug/TextualSupport.bundle/Contents/MacOS/TextualSupport normal x86_64
+r0
+
+CProcessInfoPlistFile /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/build/Debug/TextualSupport.bundle/Contents/Info.plist /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/info.plist
+r0
+
+CTouch /Users/lexi/Google\ Drive/Development/OSX/Textual\ Menu\ Editor/build/Debug/TextualSupport.bundle
+r0
+

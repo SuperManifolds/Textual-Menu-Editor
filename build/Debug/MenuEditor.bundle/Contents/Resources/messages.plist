@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Items</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>FAQ</string>
+			<key>Message</key>
+			<string>please refer to our frequently asked questions (FAQ) by following this link: http://is.gd/QxBphL</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Textual Timeout</string>
+			<key>Message</key>
+			<string>if you keep receiving disconnects due to a timeout in Textual, then chances are good that there is an intermediate connection issue between you and the IRC network being connected to. For more information see: http://is.gd/LAhMyQ</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>DCC</string>
+			<key>Message</key>
+			<string>it is the official stance of the Textual IRC Client project to NOT support file transfers through DCC. http://is.gd/h8srRm</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>SASL</string>
+			<key>Message</key>
+			<string>Textual automatically attempts SASL PLAIN authentication on servers that support it. See this link for more information: http://is.gd/b6ZI0i</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Self Compile</string>
+			<key>Message</key>
+			<string>please view https://github.com/Codeux/Textual/blob/master/README for information on compiling Textual and be aware that the staff will not provide customer support for forks or self compiled releases.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>seperator</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Feature Request</string>
+			<key>Message</key>
+			<string>to submit your feature request please contact support@codeux.com</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Migrate Preferences</string>
+			<key>Message</key>
+			<string>see this link to learn how to import and export your Textual preferences: http://is.gd/A7VsrF</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Customize Shortcuts</string>
+			<key>Message</key>
+			<string>see this link to learn how to add a new, or override an existing keyboard shortcut in Textual: http://is.gd/pNMMPs</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Writing Plugins</string>
+			<key>Message</key>
+			<string>see this link for information on how to write Objective-C plug-ins for Textual: http://is.gd/ZW1MfB</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Writing Scripts</string>
+			<key>Message</key>
+			<string>see this link for information on how to write scripts for Textual: http://is.gd/OSptgp</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>seperator</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>3rd Party Addons</string>
+			<key>Message</key>
+			<string>see this link for a list of some of the 3rd party plug-ins, scripts, and styles for Textual: http://is.gd/VK1POm</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Command Index</string>
+			<key>Message</key>
+			<string>here is a list of commands that are built into the Textual IRC Client: http://is.gd/FW3q6T</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Keyboard Shortcuts</string>
+			<key>Message</key>
+			<string>here is a list of keyboard shortcuts that are built into the Textual IRC Client: http://is.gd/87RyD2</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>seperator</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Newsletter</string>
+			<key>Message</key>
+			<string>if you own a copy of Textual you can sign up to the Textual newsletter to get pre-release copies of Textual at http://is.gd/urItDO</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>App Store Download</string>
+			<key>Message</key>
+			<string>the Textual IRC Client can be downloaded from: http://www.textualapp.com/</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Reddit</string>
+			<key>Message</key>
+			<string>the Textual subreddit can be found at /r/textual</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Twitter</string>
+			<key>Message</key>
+			<string>the official Textual twitter account can be found at http://twitter.com/Textual</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>seperator</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Unicode Bug</string>
+			<key>Message</key>
+			<string>this is a bug that has to do with OS X&apos;s rendering of unicode in Mountain Lion and is completely unrelated to textual. Other users are posting certain unicode characters that exploit this error causing a crash. Updating to OS X 10.8.5 or above will fix this issue.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Webkit Bug</string>
+			<key>Message</key>
+			<string>this is a bug introduced in OS X 10.9 Mavericks that has to do with the rendering engine used by Textual. We have notified Apple and they have so far neglected to respond. We are considering workarounds to this issue and in the meantime we appologize for the inconvenience. You can temporarily solve it by doing /clearall.</string>
+		</dict>
+	</array>
+</dict>
+</plist>
