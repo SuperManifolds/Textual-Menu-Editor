@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TPI_MenuEditor_OutlineViewController">
             <connections>
-                <outlet property="editItemWindow" destination="T9n-Ds-gv3" id="4Uu-aP-9O6"/>
+                <outlet property="editItemWindow" destination="T9n-Ds-gv3" id="9ov-XX-9BE"/>
                 <outlet property="ourView" destination="1" id="16"/>
             </connections>
         </customObject>
@@ -18,20 +18,20 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="g7N-Cv-klg">
-                    <rect key="frame" x="0.0" y="43" width="497" height="512"/>
+                    <rect key="frame" x="16" y="43" width="461" height="512"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="9BU-9f-Vlw">
-                        <rect key="frame" x="1" y="17" width="495" height="494"/>
+                        <rect key="frame" x="1" y="17" width="459" height="494"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" headerView="JOr-SK-7LE" indentationPerLevel="16" outlineTableColumn="xwD-E8-LFB" id="zSI-Uc-VTl">
-                                <rect key="frame" x="0.0" y="0.0" width="495" height="494"/>
+                                <rect key="frame" x="0.0" y="0.0" width="459" height="494"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="title" width="223.8046875" minWidth="16" maxWidth="1000" id="xwD-E8-LFB">
+                                    <tableColumn identifier="title" width="455.8046875" minWidth="16" maxWidth="1000" id="xwD-E8-LFB">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -44,7 +44,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                     </tableColumn>
-                                    <tableColumn identifier="command" width="265" minWidth="40" maxWidth="1000" id="Y07-zq-YIC">
+                                    <tableColumn identifier="command" width="229" minWidth="40" maxWidth="1000" hidden="YES" id="Y07-zq-YIC">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Command">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -60,6 +60,7 @@
                                 </tableColumns>
                                 <connections>
                                     <outlet property="dataSource" destination="L1Y-5m-lFh" id="6if-wJ-43r"/>
+                                    <outlet property="delegate" destination="-2" id="6DX-jd-6Xk"/>
                                 </connections>
                             </outlineView>
                         </subviews>
@@ -74,35 +75,41 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="JOr-SK-7LE">
-                        <rect key="frame" x="0.0" y="0.0" width="495" height="17"/>
+                        <rect key="frame" x="0.0" y="0.0" width="459" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <button verticalHuggingPriority="750" id="gyc-42-7co">
-                    <rect key="frame" x="381" y="4" width="122" height="32"/>
+                <button verticalHuggingPriority="750" id="Ih5-8w-pdZ">
+                    <rect key="frame" x="415" y="13" width="30" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Remove Item" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tAf-Vt-QOp">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" id="slj-40-7SS">
-                    <rect key="frame" x="283" y="4" width="98" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Add Item" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bzp-DF-Yty">
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RWQ-sb-SLu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="addItemClicked:" target="L1Y-5m-lFh" id="bpC-SU-tqf"/>
+                        <action selector="addItemClicked:" target="L1Y-5m-lFh" id="PlX-gF-ca9"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="Hhp-yT-lwN">
+                    <rect key="frame" x="447" y="13" width="30" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iTg-Bd-33u">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeItemClicked:" target="L1Y-5m-lFh" id="Dwp-sn-qBD"/>
                     </connections>
                 </button>
             </subviews>
         </customView>
         <customObject id="L1Y-5m-lFh" customClass="TPI_MenuEditor_OutlineViewController">
             <connections>
-                <outlet property="addItemButton" destination="slj-40-7SS" id="fU7-eK-3hi"/>
-                <outlet property="removeItemButton" destination="gyc-42-7co" id="G2v-Sa-70Q"/>
+                <outlet property="addItemButton" destination="Ih5-8w-pdZ" id="6Bu-m4-PCy"/>
+                <outlet property="editItemWindow" destination="T9n-Ds-gv3" id="dmA-v4-BDU"/>
+                <outlet property="removeItemButton" destination="Hhp-yT-lwN" id="O2k-7h-lxb"/>
+                <outlet property="sheetCancelButton" destination="e3K-NL-6lr" id="sJa-Es-dgZ"/>
+                <outlet property="sheetSaveButton" destination="qf5-53-oIq" id="YJr-f3-Xa6"/>
             </connections>
         </customObject>
         <button verticalHuggingPriority="750" id="qh9-Ao-tSd">
@@ -269,11 +276,40 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="titleBar" size="12"/>
                     </box>
+                    <button verticalHuggingPriority="750" id="qf5-53-oIq">
+                        <rect key="frame" x="361" y="3" width="69" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O5d-EE-Fhu">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="sheetSaveClicked:" target="L1Y-5m-lFh" id="13s-tg-k6q"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="e3K-NL-6lr">
+                        <rect key="frame" x="292" y="3" width="69" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pMQ-wE-pgn">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="sheetCancelClicked:" target="L1Y-5m-lFh" id="JiC-9t-TIP"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
-            <connections>
-                <outlet property="delegate" destination="-2" id="Sd4-GC-lRJ"/>
-            </connections>
         </window>
     </objects>
+    <resources>
+        <image name="NSAddTemplate" width="8" height="8"/>
+        <image name="NSRemoveTemplate" width="8" height="8"/>
+    </resources>
 </document>

@@ -2,7 +2,7 @@
 	TPI_MenuEditor_OutlineViewController.h
 	MenuEditor
 
-
+ 
     Copyright (c) 2013 Delexious.com
     All rights reserved.
  
@@ -20,13 +20,15 @@
 #import "TPI_MenuEditor.h"
 #import "TPI_MenuEditor_MenuItem.h"
 
-@interface TPI_MenuEditor_OutlineViewController : NSObject <NSOutlineViewDataSource> {
+@interface TPI_MenuEditor_OutlineViewController : NSObject <NSOutlineViewDataSource, NSWindowDelegate> {
     IBOutlet NSButton *addItemButton;
     IBOutlet NSButton *removeItemButton;
-    IBOutlet NSPanel *ourPanel;
+    IBOutlet NSButton *sheetCancelButton;
+    IBOutlet NSButton *sheetSaveButton;
 }
 @property (copy) NSMutableArray *menuItems;
 @property (nonatomic) NSButton *addItemButton;
 @property (nonatomic) NSButton *removeItemButton;
-
+@property (nonatomic) NSButton *sheetCancelButton;
+@property (nonatomic) NSButton *sheetSaveButton;
 @end

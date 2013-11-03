@@ -1,6 +1,7 @@
 /*
 	TPI_MenuEditor_OutlineViewController.m
 	MenuEditor
+ 
 
     Copyright (c) 2013 Delexious.com
     All rights reserved.
@@ -17,16 +18,24 @@
 #import "TPI_MenuEditor_OutlineViewController.h"
 
 @interface TPI_MenuEditor_OutlineViewController ()
-    - (IBAction)addItemClicked:(id)sender;
+- (IBAction)addItemClicked:(id)sender;
+- (IBAction)removeItemClicked:(id)sender;
+- (IBAction)sheetCancelClicked:(id)sender;
+- (IBAction)sheetSaveClicked:(id)sender;
+
     //@property (nonatomic, unsafe_unretained) IBOutlet NSWindow *editItemWindow;
     @property (strong) IBOutlet NSWindow *editItemWindow;
     @property (nonatomic) IBOutlet NSTextField *titleField;
+    @property (strong) NSOutlineView *outlineView;
 @end
 
 @implementation TPI_MenuEditor_OutlineViewController
 
 @synthesize addItemButton;
 @synthesize removeItemButton;
+@synthesize sheetCancelButton;
+@synthesize sheetSaveButton;
+@synthesize outlineView;
 
 
 - (id)init {
@@ -58,11 +67,22 @@
 -(id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
     if ([[tableColumn identifier] isEqualToString:@"title"]) {
         return [item title];
-    } else if ([[tableColumn identifier] isEqualToString:@"command"]) {
-        //TODO: Handle display and formatting of command.
-        return @"Message";
     }
-    return @"Error";
+    return [NSString string];
+}
+
+- (void)addItem {
+    [NSApp beginSheet:self.editItemWindow
+	   modalForWindow:addItemButton.window
+		modalDelegate:self
+	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
+		  contextInfo:nil];
+    
+	[self.editItemWindow makeFirstResponder:self.titleField];
+    id selectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
+    if (selectedItem) {
+    
+    }
 }
 
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
@@ -71,18 +91,20 @@
 }
 
 -  (void)removeItemButtonClick:(id)sender {
-    
 }
 
+
 - (IBAction)addItemClicked:(id)sender {
-    TPI_MenuEditor *window = [TPI_MenuEditor window];
-    [NSApp beginSheet:self.editItemWindow
-	   modalForWindow:window
-		modalDelegate:self
-	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
-		  contextInfo:nil];
     
-	/* Make text field the first responder. */
-	[self.editItemWindow makeFirstResponder:self.titleField];
+    [self addItem];
 }
+
+- (IBAction)sheetCancelClicked:(id)sender {
+    [NSApp endSheet:self.editItemWindow];
+}
+
+- (IBAction)sheetSaveClicked:(id)sender {
+    [NSApp endSheet:self.editItemWindow];
+}
+
 @end
