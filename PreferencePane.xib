@@ -105,11 +105,16 @@
         </customView>
         <customObject id="L1Y-5m-lFh" customClass="TPI_MenuEditor_OutlineViewController">
             <connections>
+                <outlet property="activeNetworkToken" destination="SMm-eB-ZJe" id="07S-jt-Bdm"/>
                 <outlet property="addItemButton" destination="Ih5-8w-pdZ" id="6Bu-m4-PCy"/>
+                <outlet property="commandsField" destination="Tpn-a1-LeS" id="0Ly-8g-OsH"/>
+                <outlet property="currentChannelToken" destination="aM1-X5-64E" id="mID-CT-1bh"/>
                 <outlet property="editItemWindow" destination="T9n-Ds-gv3" id="dmA-v4-BDU"/>
                 <outlet property="removeItemButton" destination="Hhp-yT-lwN" id="O2k-7h-lxb"/>
+                <outlet property="selectedUserToken" destination="wwl-V8-3af" id="rxj-kS-WQh"/>
                 <outlet property="sheetCancelButton" destination="e3K-NL-6lr" id="sJa-Es-dgZ"/>
                 <outlet property="sheetSaveButton" destination="qf5-53-oIq" id="YJr-f3-Xa6"/>
+                <outlet property="titleField" destination="OhW-iF-DCf" id="JH5-zK-wnb"/>
             </connections>
         </customObject>
         <button verticalHuggingPriority="750" id="qh9-Ao-tSd">
@@ -154,6 +159,9 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="sheetSubmenuCheckboxClicked:" target="L1Y-5m-lFh" id="Tvr-De-pTS"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hoc-iE-NQ3">
                         <rect key="frame" x="18" y="333" width="75" height="17"/>
@@ -172,6 +180,9 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </tokenFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="L1Y-5m-lFh" id="Sw9-f6-Sah"/>
+                        </connections>
                     </tokenField>
                     <box autoresizesSubviews="NO" title="Variables" borderType="line" id="WrU-ZX-ixn">
                         <rect key="frame" x="17" y="40" width="410" height="81"/>
@@ -246,11 +257,14 @@
                                 <tokenField verticalHuggingPriority="750" id="wwl-V8-3af">
                                     <rect key="frame" x="0.0" y="39" width="126" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <tokenFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" alignment="left" title="Selected User" allowsEditingTextAttributes="YES" id="4XD-JT-Ynw">
+                                    <tokenFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" alignment="left" title="Selected User" placeholderString="" allowsEditingTextAttributes="YES" id="4XD-JT-Ynw">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </tokenFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="L1Y-5m-lFh" id="Bfb-QI-w5F"/>
+                                    </connections>
                                 </tokenField>
                                 <tokenField verticalHuggingPriority="750" id="aM1-X5-64E">
                                     <rect key="frame" x="124" y="39" width="146" height="17"/>
@@ -260,6 +274,9 @@
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </tokenFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="L1Y-5m-lFh" id="gTa-Fx-mQM"/>
+                                    </connections>
                                 </tokenField>
                                 <tokenField verticalHuggingPriority="750" id="SMm-eB-ZJe">
                                     <rect key="frame" x="267" y="39" width="137" height="17"/>
@@ -269,6 +286,9 @@
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </tokenFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="L1Y-5m-lFh" id="2wB-nw-URL"/>
+                                    </connections>
                                 </tokenField>
                             </subviews>
                         </view>
@@ -277,7 +297,7 @@
                         <font key="titleFont" metaFont="titleBar" size="12"/>
                     </box>
                     <button verticalHuggingPriority="750" id="qf5-53-oIq">
-                        <rect key="frame" x="361" y="3" width="69" height="32"/>
+                        <rect key="frame" x="356" y="3" width="74" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O5d-EE-Fhu">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -291,9 +311,9 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="e3K-NL-6lr">
-                        <rect key="frame" x="292" y="3" width="69" height="32"/>
+                        <rect key="frame" x="270" y="3" width="86" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pMQ-wE-pgn">
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pMQ-wE-pgn">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent" base64-UTF8="YES">

@@ -20,15 +20,16 @@
 #import "TPI_MenuEditor.h"
 #import "TPI_MenuEditor_MenuItem.h"
 
-@interface TPI_MenuEditor_OutlineViewController : NSObject <NSOutlineViewDataSource, NSWindowDelegate> {
+@interface TPI_MenuEditor_OutlineViewController : NSObject <NSOutlineViewDataSource, NSWindowDelegate, NSTokenFieldDelegate> {
+    IBOutlet NSTextField *titleField;
+    IBOutlet NSTokenField *commandsField;
+    IBOutlet NSTokenField *selectedUserToken;
+    IBOutlet NSTokenField *currentChannelToken;
+    IBOutlet NSTokenField *activeNetworkToken;
     IBOutlet NSButton *addItemButton;
     IBOutlet NSButton *removeItemButton;
     IBOutlet NSButton *sheetCancelButton;
     IBOutlet NSButton *sheetSaveButton;
+    IBOutlet NSButton *sheetSubmenuCheckbox;
 }
-@property (copy) NSMutableArray *menuItems;
-@property (nonatomic) NSButton *addItemButton;
-@property (nonatomic) NSButton *removeItemButton;
-@property (nonatomic) NSButton *sheetCancelButton;
-@property (nonatomic) NSButton *sheetSaveButton;
 @end

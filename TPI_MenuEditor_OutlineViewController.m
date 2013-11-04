@@ -22,11 +22,22 @@
 - (IBAction)removeItemClicked:(id)sender;
 - (IBAction)sheetCancelClicked:(id)sender;
 - (IBAction)sheetSaveClicked:(id)sender;
+- (IBAction)sheetSubmenuCheckboxClicked:(id)sender;
 
     //@property (nonatomic, unsafe_unretained) IBOutlet NSWindow *editItemWindow;
     @property (strong) IBOutlet NSWindow *editItemWindow;
     @property (nonatomic) IBOutlet NSTextField *titleField;
+    @property (nonatomic) IBOutlet NSTokenField *commandsField;
+    @property (nonatomic) IBOutlet NSTokenField *selectedUserToken;
+    @property (nonatomic) IBOutlet NSTokenField *currentChannelToken;
+    @property (nonatomic) IBOutlet NSTokenField *activeNetworkToken;
     @property (strong) NSOutlineView *outlineView;
+    @property (copy) NSMutableArray *menuItems;
+    @property (nonatomic) NSButton *addItemButton;
+    @property (nonatomic) NSButton *removeItemButton;
+    @property (nonatomic) NSButton *sheetCancelButton;
+    @property (nonatomic) NSButton *sheetSaveButton;
+    @property (nonatomic) NSButton *sheetSubmenuCheckbox;
 @end
 
 @implementation TPI_MenuEditor_OutlineViewController
@@ -35,11 +46,26 @@
 @synthesize removeItemButton;
 @synthesize sheetCancelButton;
 @synthesize sheetSaveButton;
+@synthesize sheetSubmenuCheckbox;
 @synthesize outlineView;
+@synthesize titleField;
+@synthesize commandsField;
+@synthesize selectedUserToken;
+@synthesize currentChannelToken;
+@synthesize activeNetworkToken;
 
+NSArray *tokenIdentifiers;
 
 - (id)init {
     if (self) {
+        tokenIdentifiers = @[ @"Selected User", @"Current Channel", @"Active Network"];
+        [commandsField setTokenizingCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@""]];
+        [selectedUserToken setTokenizingCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@""]];
+        [currentChannelToken setTokenizingCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@""]];
+        [activeNetworkToken setTokenizingCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@""]];
+        [selectedUserToken setStringValue:@"%Selected User,"];
+        [currentChannelToken setStringValue:@"%Current Channel,"];
+        [activeNetworkToken setStringValue:@"%Active Network,"];
         _menuItems = [[NSMutableArray alloc] init];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         if([userDefaults objectForKey:@"userMenu"]) {
@@ -49,6 +75,95 @@
     
     return self;
 }
+
+- (void)addItem {
+    [NSApp beginSheet:[self editItemWindow]
+       modalForWindow:[addItemButton window]
+        modalDelegate:self
+       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
+          contextInfo:nil];
+    
+	[self.editItemWindow makeFirstResponder:[self titleField]];
+    id selectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
+    if (selectedItem) {
+        [titleField setStringValue:[selectedItem title]];
+        if ([selectedItem isSubmenuItem]) {
+            [sheetSubmenuCheckbox setState:NSOnState];
+        } else {
+            [commandsField setStringValue:[[selectedItem commands] componentsJoinedByString:[NSString stringWithFormat: @"%C", (UniChar)NSLineSeparatorCharacter]]];
+        }
+    } else {
+        
+    }
+}
+
+#pragma mark NSTokenField Delegate Methods
+
+
+    // Copyright (c) 2013, Tobias Pollmann (foldericon)
+    // All rights reserved.
+
+- (NSArray *)separateStringIntoTokens:(NSString *)string
+{
+    NSMutableArray *tokens = [NSMutableArray array];
+    int i = 0;
+    while (i < [string length]) {
+        unsigned int start = i;
+        
+        if ([[string substringFromIndex:i] hasPrefix:@"%"]) {
+            for (; i < [string length]; i++) {
+                if ([[string substringFromIndex:(i + 1)] hasPrefix:@"%"]) {
+                    i++;
+                    break;
+                }
+            }
+        } else {
+            for (; i < [string length]; i++) {
+                if ([[string substringFromIndex:(i + 1)] hasPrefix:@"%"]) {
+                    i++;
+                    break;
+                }
+            }
+        }
+        [tokens addObject:[string substringWithRange:NSMakeRange(start, i - start)]];
+    }
+    
+    return tokens;
+}
+
+- (NSString *)tokenField:(NSTokenField *)tokenField displayStringForRepresentedObject:(id)representedObject {
+    return [representedObject substringFromIndex:1];
+}
+
+- (NSTokenStyle)tokenField:(NSTokenField *)tokenField styleForRepresentedObject:(id)representedObject {
+	if ([representedObject hasPrefix:@"%"]) {
+		return NSRoundedTokenStyle;
+	}
+	return NSPlainTextTokenStyle;
+}
+
+- (NSArray *)tokenField:(NSTokenField *)tokenField shouldAddObjects:(NSArray *)tokens atIndex:(NSUInteger)index {
+	NSString *tokenString = [tokens componentsJoinedByString:@""];
+    return [self separateStringIntoTokens:tokenString];
+}
+
+- (id)tokenField:(NSTokenField *)tokenField representedObjectForEditingString:(NSString *)editingString {
+    return editingString;
+}
+
+- (NSString *)tokenField:(NSTokenField *)tokenField editingStringForRepresentedObject:(id)representedObject {
+    return nil;
+}
+
+- (NSArray *)tokenField:(NSTokenField *)tokenField readFromPasteboard:(NSPasteboard *)pboard {
+    return [self separateStringIntoTokens:[pboard stringForType:NSStringPboardType]];
+}
+
+- (BOOL)tokenField:(NSTokenField *)tokenField writeRepresentedObjects:(NSArray *)objects toPasteboard:(NSPasteboard *)pboard {
+    [pboard setString:[objects componentsJoinedByString:@""] forType:NSStringPboardType];
+    return YES;
+}
+
 
 #pragma mark NSOutlineView Data Source Methods
 
@@ -71,22 +186,9 @@
     return [NSString string];
 }
 
-- (void)addItem {
-    [NSApp beginSheet:self.editItemWindow
-	   modalForWindow:addItemButton.window
-		modalDelegate:self
-	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
-		  contextInfo:nil];
-    
-	[self.editItemWindow makeFirstResponder:self.titleField];
-    id selectedItem = [outlineView itemAtRow:[outlineView selectedRow]];
-    if (selectedItem) {
-    
-    }
-}
+#pragma mark Events
 
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
-{
+- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
 	[sheet close];
 }
 
@@ -94,17 +196,25 @@
 }
 
 
-- (IBAction)addItemClicked:(id)sender {
-    
+- (void)addItemClicked:(id)sender {
     [self addItem];
 }
 
-- (IBAction)sheetCancelClicked:(id)sender {
+- (void)sheetCancelClicked:(id)sender {
     [NSApp endSheet:self.editItemWindow];
 }
 
-- (IBAction)sheetSaveClicked:(id)sender {
+- (void)sheetSaveClicked:(id)sender {
     [NSApp endSheet:self.editItemWindow];
+}
+
+- (void)sheetSubmenuCheckboxClicked:(id)sender {
+    if ([sender state] == NSOnState) {
+        [commandsField setEnabled:NO];
+        [commandsField setStringValue: @""];
+    } else {
+        [commandsField setEnabled:YES];
+    }
 }
 
 @end
